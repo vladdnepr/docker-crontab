@@ -3,10 +3,8 @@ FROM alpine:3.12 as rq-build
 ENV RQ_VERSION=1.0.2
 WORKDIR /root/
 
-RUN apk --update add upx \
-    && wget https://github.com/dflemstr/rq/releases/download/v${RQ_VERSION}/rq-v${RQ_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-    && tar -xvf rq-v1.0.2-x86_64-unknown-linux-musl.tar.gz \
-    && upx --brute rq
+RUN wget https://github.com/dflemstr/rq/releases/download/v${RQ_VERSION}/rq-v${RQ_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+    && tar -xvf rq-v1.0.2-x86_64-unknown-linux-musl.tar.gz
 
 FROM library/docker:stable
 
