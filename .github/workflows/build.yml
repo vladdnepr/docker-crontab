@@ -1,13 +1,14 @@
 name: build
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
     tags:
       - '*'
   schedule:
-      - cron: '0 0 * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   multi:
