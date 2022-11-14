@@ -27,7 +27,10 @@ get_config() {
     fi
 }
 
-DOCKER_SOCK=/var/run/docker.sock
+if [ "${DOCKER_SOCK}" == "" ]; then
+    DOCKER_SOCK=/var/run/docker.sock
+fi
+
 CRONTAB_FILE=/etc/crontabs/docker
 
 # Ensure dir exist - in case of volume mapping
