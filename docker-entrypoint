@@ -58,7 +58,7 @@ ensure_docker_socket_accessible() {
     
     # Test custom sock and if fail then use default
     if [ "${DOCKER_SOCK}" != "/var/run/docker.sock.test" ]; then
-        if ! su -l docker -s /bin/bash -c "/usr/local/bin/docker -H unix://${DOCKER_SOCK} run hello-world" > /dev/null 2>&1; then
+        if ! su -l docker -s /bin/bash -c "/usr/local/bin/docker -H unix://${DOCKER_SOCK} run --rm --name crontab_selftest hello-world" > /dev/null 2>&1; then
                 DOCKER_SOCK=/var/run/docker.sock
         fi
     fi
